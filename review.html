@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirect to Google Review</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXX-X'); // حطي هنا رقم حساب Analytics الخاص فيك
+  </script>
+</head>
+<body>
+<script>
+  // قراءة اسم الموظف من الرابط
+  const urlParams = new URLSearchParams(window.location.search);
+  const employee = urlParams.get('employee');
+
+  // تسجيل الحدث في Analytics
+  gtag('event', 'review_click', {
+    'employee_name': employee
+  });
+
+  // التوجيه لقوقل ماب بعد ثانية واحدة
+  setTimeout(() => {
+    window.location.href = "https://maps.app.goo.gl/kQfppjNHPCVNYzuU7?g_st=ic";
+  }, 1000);
+</script>
+<p>Redirecting to Google Maps review…</p>
+</body>
+</html>
